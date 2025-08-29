@@ -8,19 +8,20 @@ const Footer=()=>{
 
             <div className="row  justify-content-center container  ">
                 <div className="col-sm">
-                    <Image src="https://ngratesc.sirv.com/global_wisdom/logo.png" className="img_invert img_fluid" height={60}  width={70} alt="logo"/>
+                    <h4>M.N Zisengwe</h4>
                     <br/>
-                    <span>Empowering authors worldwide since 2017. Your story deserves to be told.</span>
+                    <span>Discover the vibrant voice of M.N. Zisengwe, where faith, humor, and Zimbabwean stories come alive on every page</span>
                 </div>
                 <div className="col-sm d-flex flex-column text-white">
-                    <p className="fw-bold text-warning">Contact Details</p>
-                    <Link href="mailto:info@globalwisdom.com" className="text-white"> info@globalwisdom.com</Link>
-                    <Link href="tel:+263777358130>+263 77 735 8130" className="text-white">+263 77 735 8130</Link>
-                    <span>Office 1, Unforgettable Building, Bulawayo <br/> Zimbabwe</span>
+                    <p className="fw-bold ">Contact Details</p>
+                    <Link href="mailto:info@globalwisdom.com" className="text-white">pheonixconsultancy86@gmail.com</Link>
+                    <Link href="tel:+263775388608" className="text-white">+263 77 538 8608</Link>
+                    <Link href="https://www.facebook.com/chipangurafaith/" className="text-white">Facebook</Link>
+                    <Link href="https://www.instagram.com/phoenixpublishing_zw" className="text-white">Instagram</Link>
 
                 </div>
                 <div className="col-sm d-flex flex-column text-white">
-                    <p className="fw-bold text-warning">Quick Links</p>
+                    <p className="fw-bold ">Quick Links</p>
                     <Link href="/" className="text-white"> Home</Link>
                     <Link href="/about" className="text-white">About</Link>
                     <Link href="/shop" className="text-white">Shop</Link>
@@ -28,8 +29,8 @@ const Footer=()=>{
                     <Link href="/contact" className="text-white">Contact</Link>
                 </div>
                 <div className="col-sm">
-                        <p className="fw-bold text-warning">Subscribe To Our Newsletter</p>
-                            <iframe className="rounded w-100" src="https://globalwisdom.substack.com/embed"></iframe>
+                        <p className="fw-bold ">Subscribe To Our Newsletter</p>
+                            <iframe className="rounded w-100" src="https://mnzisengwe.substack.com/embed"></iframe>
 
                 </div>
 
@@ -38,7 +39,7 @@ const Footer=()=>{
 
             <hr className="w-100" />
             <div className="text-center">
-                <small>© {new Date().getFullYear()} Global Wisdom Press. All rights reserved</small>
+                <small>© {new Date().getFullYear()} M.N Zisengwe. All rights reserved</small>
             </div>
         </div>
 

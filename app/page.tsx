@@ -36,41 +36,56 @@ export default function Home() {
         <Fade>
         <div className="container text-center text-white">
           <h1 className="display-1 fw-bold ">
-            Illuminate Your
-            <span className="text-warning"> Story</span>
+          M.N Zisengwe
           </h1>
-          <p>From manuscript to masterpiece, Global Wisdom transforms your vision into published reality</p>
+          <p>Discover the vibrant voice of M.N. Zisengwe, where faith, humor, and Zimbabwean stories come alive on every page.</p>
           <div className="d-flex  flex-row flex-wrap justify-content-center gap-2">
-            <Link href="/contact"><button className="btn btn-warning">Start Your Journey</button></Link>
-            <Link href="/shop"><button className="btn btn-outline-warning">Browse Books</button></Link>
+            <Link href="/contact"><button className="btn">Shop</button></Link>
           </div>
 
         </div>
         </Fade>
-        <video className="video" src="https://ngratesc.sirv.com/global_wisdom/6143904-sd_960_506_25fps.mp4" muted preload="true" loop autoPlay={true}></video>
+        <video className="video" src="https://ngratesc.sirv.com/global_wisdom/1335-145564309_small.mp4" muted preload="true" loop autoPlay={true}></video>
 
       </main>
       <div className="min-vh-100 container d-flex flex-column justify-content-center align-items-center text-center py-3">
         <div className="row align-items-center">
           <div className="col-sm mb-3">
             <Fade cascade direction="up">
-            <h2 className="display-1 fw-bold mb-4"><span className="tp">Your Story</span>, <span className="text-warning">Our Passion</span></h2>
+            <h2 className="display-1 fw-bold mb-4">Discover Her World</h2>
             <p className="">
-              At Global Wisdom Printing Press, we believe every story deserves to be told.
-              Whether you're an aspiring author or a seasoned writer, we're here to help you bring your vision to life.
+              Welcome to the world of M.N. Zisengwe, a writer whose stories capture the spirit, humor, and contradictions of everyday life in Zimbabwe and beyond. Discover her remarkable debut novel, "Mhando," and explore a creative journey shaped by faith, family, and fearless curiosity. Kick back, browse around, and get to know the woman behind the words whether she’s knitting, rock climbing, or simply enjoying her front porch views.
             </p>
-            <Link href="/about" className="btn btn-warning ">Learn More</Link>
+            {/* <Link href="/about" ><button className="btn  btn-outline-light">Learn More</button></Link> */}
             </Fade>
           </div>
           <div className="col-sm mb-3">
             <Fade direction="down">
-            <Image src="https://ngratesc.sirv.com/global_wisdom/boook2.jpg" height={500} width={500} className="img-fluid rounded" alt="person on a typewrite" />
+            <Image src="https://ngratesc.sirv.com/global_wisdom/front.jpg" height={500} width={500} className="img-fluid rounded" alt="person on a typewrite" />
             </Fade>
           </div>
         </div>
+         <div className="row align-items-center">
+          
+          <div className="col-sm mb-3 order-md-2">
+            <Fade cascade direction="up">
+            <h2 className="display-1 fw-bold mb-4">About</h2>
+            <p className="">
+              Meet Nancy Zisengwe, the heart and mind behind M.N. Zisengwe. As a girl, she found comfort in crafts and puzzles; as a woman, she’s traded swings for hammocks and daydreams for vibrant stories. Nancy believes in the power of passion, the teachings of Jesus Christ of Nazareth, and the undeniable truth that eggs are best avoided. Her days are a blend of lazy afternoons and bursts of creative energy always with an eye for humor and honesty. Through her writing, Nancy seeks to offer fresh perspectives, especially about life in Zimbabwe, beyond the stereotypes and struggles.
+            </p>
+            {/* <Link href="/about" ><button className="btn  btn-outline-light">Learn More</button></Link> */}
+            </Fade>
+          </div>
+          <div className="col-sm mb-3 order-md-1">
+            <Fade direction="down">
+            <Image src="https://ngratesc.sirv.com/global_wisdom/author.jpg" height={500} width={500} className="img-fluid rounded" alt="person on a typewrite" />
+            </Fade>
+          </div>
+          
+        </div>
 
       </div>
-      <div className="text-center  bcc text-white d-flex align-items-center min-vh-100">
+      {/* <div className="text-center  bcc text-white d-flex align-items-center min-vh-100">
         <div className="container p-3">
           <Fade cascade direction="down">
           <h1 className="display-1  fw-bold ">Publishing Services</h1>
@@ -101,11 +116,11 @@ export default function Home() {
           </div>
 </Fade>
         </div>
-      </div>
+      </div> */}
       <div className="container  text-center   min-vh-100 mb-3 ">
         <div>
         <Fade direction="left">
-        <h1 className="display-1 fw-bold tp ">Featured Publications</h1>
+        <h1 className="display-1 fw-bold  ">Shop</h1>
         <div className="row gap-3 ">
           {
             sample_data.map((book, index) =>{
@@ -122,10 +137,7 @@ export default function Home() {
           }
                   </div>
           <br/>
-          <Link href="shop">
-                  <button className="btn btn-outline-warning">Shop Now</button>
-
-          </Link>
+          
                    </Fade>
 
         </div>
@@ -134,9 +146,9 @@ export default function Home() {
       <div className="bcc">
       <Fade cascade direction="up">
         <div className="container py-5 text-center text-white" >
-          <h1 className="display-1 text-warning fw-bold">Ready To Share Your Story?</h1>
-          <p>Join hundreds of successful authors who have trusted Global Wisdom with their publishing journey</p>
-            <Link href="/contact" className="btn btn-outline-warning">Get started Today</Link>
+          <h1 className="display-1  fw-bold">Let's Go on a Journey Together!</h1>
+          <p>Step into Nancy’s thoughts and daily adventures</p>
+            <Link href="/blog"><button  className="btn btn-outline-light">Read my blog</button></Link>
         </div>
       </Fade>
 

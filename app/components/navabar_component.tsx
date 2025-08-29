@@ -63,14 +63,16 @@ const Navbar = () => {
           {/* Logo */}
           <div className="navbar-brand">
             <Link href="/" className="text-decoration-none text-dark fw-bold d-flex flex-row align-items-center gap-2">
-              <Image 
+              
+              M.N.Zisengwe
+              {/* <Image 
                 src="https://ngratesc.sirv.com/global_wisdom/logo.png" 
                 className="img-fluid" 
                 width={50} 
                 height={50} 
-                alt="Sprout & Co" 
+                alt="mn" 
                 style={{ objectFit: 'contain' }}
-              />
+              /> */}
             </Link>
           </div>
 
@@ -88,8 +90,8 @@ const Navbar = () => {
           {/* Call Button (Desktop) */}
           <div className="d-none d-md-block">
             <Link href="/contact">
-              <button className="btn btn-outline-warning fw-bold ">
-                Get Published
+              <button className="btn  text-white fw-bold ">
+                Blog
               </button>
             </Link>
           </div>

@@ -1,21 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap');
 
 :root{
-  --pc:#09235d;
+  --sc:#25141e;
+  --tc:#aba599;
 }
 
 
+body{
+  background-color: var(--sc);
+  color: white;
+  font-family: "League Spartan", sans-serif;
+  font-style: normal;
+}
 
 .tp{
-  color: #09235d;
+  color: #25141e !important;
 }
+
 
 .bc{
-  background-color: #09245dab;
+  background-color: #312020d8;
 }
 
-.bcc{
-  background-color: var(--pc);
-}
 
 .video{
   position: absolute;
@@ -46,6 +52,22 @@ a{
 }
 
 .pbtn:hover{
-  color: yellow !important;
+  color: var(--sc) !important;
   background-color: var(--pc);
+}
+
+
+button{
+  background-color: var(--sc) !important;
+  font-weight: 400 !important;
+  color: white!important;
+}
+
+button:hover,:active{
+  background-color: var(--sc) !important;
+  color: white !important;
+}
+
+.border-warning{
+  border-bottom-color: var(--sc) !important;
 }
