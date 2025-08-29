@@ -4,7 +4,8 @@ import Link from "next/link";
 import { BgImg } from "./components/bg_img";
 import { Fade } from "react-awesome-reveal";
 import { Modal } from "react-bootstrap";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { db } from "./init/supabase";
 
 export default function Home() {
   const [selected,set_selected] = useState<any>({
@@ -15,6 +16,19 @@ export default function Home() {
     price: 0
   })
   const [show,set_show] = useState<boolean>(false)
+  const [books,set_books] = useState<Array<any>>([])
+
+  const get_data = async()=>{
+    try{
+      const {data,error} = await db.from("items").select("*").eq("user_id", "kp_451fa5d1d80f4d7cb4eb151ffa94dc26")
+      if(error){
+        return set_books([])
+      }
+      set_books(data)
+    }catch(error){
+      console.log(error)
+    }
+  }
 
   const sample_data = [
     {
@@ -25,6 +39,10 @@ export default function Home() {
     price: 20
   }
 ]
+
+useEffect(()=>{
+  get_data()
+},[])
   return (
     <div >
       <main className="bc d-flex justify-content-center align-items-center vh-100 position-relative">
@@ -49,7 +67,7 @@ export default function Home() {
             <Fade cascade direction="up">
             <h2 className="display-1 fw-bold mb-4">Discover Her World</h2>
             <p className="">
-              Welcome to the world of M.N. Zisengwe, a writer whose stories capture the spirit, humor, and contradictions of everyday life in Zimbabwe and beyond. Discover her remarkable debut novel, "Mhando," and explore a creative journey shaped by faith, family, and fearless curiosity. Kick back, browse around, and get to know the woman behind the words whether she’s knitting, rock climbing, or simply enjoying her front porch views.
+              Welcome to the world of Mutsawashe Nancy Zisengwe, a writer whose stories capture the spirit, humor, and contradictions of everyday life in Zimbabwe and beyond. Discover her remarkable debut novel, "Mhando," and explore a creative journey shaped by faith, family, and fearless curiosity. Kick back, browse around, and get to know the woman behind the words whether she’s knitting, rock climbing, or simply enjoying her front porch views.
             </p>
             {/* <Link href="/about" ><button className="btn  btn-outline-light">Learn More</button></Link> */}
             </Fade>
@@ -66,14 +84,14 @@ export default function Home() {
             <Fade cascade direction="up">
             <h2 className="display-1 fw-bold mb-4">About</h2>
             <p className="">
-              Meet Nancy Zisengwe, the heart and mind behind M.N. Zisengwe. As a girl, she found comfort in crafts and puzzles; as a woman, she’s traded swings for hammocks and daydreams for vibrant stories. Nancy believes in the power of passion, the teachings of Jesus Christ of Nazareth, and the undeniable truth that eggs are best avoided. Her days are a blend of lazy afternoons and bursts of creative energy always with an eye for humor and honesty. Through her writing, Nancy seeks to offer fresh perspectives, especially about life in Zimbabwe, beyond the stereotypes and struggles.
+              Meet Mutsawashe Nancy Zisengwe, the heart and mind behind M.N. Zisengwe. As a girl, she found comfort Knitting, crocheting or solving the newspapers latest edition of sudoku; as a woman, she’s traded swings for hammocks and daydreams for vibrant stories. Nancy believes in the power of passion, the teachings of Jesus Christ of Nazareth, and the undeniable truth that eggs are best avoided. Her days are a blend of lazy afternoons and bursts of creative energy always with an eye for humor and honesty. Through her writing, Nancy seeks to offer fresh perspectives, especially about life in Zimbabwe, beyond the stereotypes and struggles.
             </p>
             {/* <Link href="/about" ><button className="btn  btn-outline-light">Learn More</button></Link> */}
             </Fade>
           </div>
           <div className="col-sm mb-3 order-md-1">
             <Fade direction="down">
-            <Image src="https://ngratesc.sirv.com/global_wisdom/author.jpg" height={500} width={500} className="img-fluid rounded" alt="person on a typewrite" />
+            <Image src="https://ngratesc.sirv.com/global_wisdom/musta.jpg" height={500} width={500} className="img-fluid rounded" alt="person on a typewrite" />
             </Fade>
           </div>
           
@@ -130,12 +148,37 @@ export default function Home() {
             </div>
           
 
-            <span className="fs-6"
-              
+            <p className="fs-6 text-truncate pb-0 mb-0"        
             >
-                      
-
               "Mhando" explores the complicated highs and lows of privilege....
+            </p>
+            <br/>
+            <button className="btn btn-outline-light w-100" onClick={()=>{
+              set_selected(book)
+              set_show(true)
+              }}>View</button>
+            
+          </div>
+              )
+            })
+          }
+
+          {
+            books.map((book:any,index)=>{
+                return(
+  <div className="col-sm col-md-3 p-2 shadow-lg rounded-2 text-start" key={index+"s"}>
+            <div style={{ height: "300px", ...BgImg(book.img) }} className="d-flex justify-content-center align-items-center mb-3">
+
+            </div>
+            <div className="d-flex justify-content-between align-items-center">
+              <span className="fw-bold">{book.item_name}</span>
+            <span>${book?.price.toFixed(2)}</span>
+            </div>
+          
+
+            <span className="fs-6 text-truncate"        
+            >
+              {book?.description}
             </span>
             <br/>
             <button className="btn btn-outline-light w-100" onClick={()=>{
