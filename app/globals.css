@@ -1,0 +1,51 @@
+
+:root{
+  --pc:#09235d;
+}
+
+
+
+.tp{
+  color: #09235d;
+}
+
+.bc{
+  background-color: #09245dab;
+}
+
+.bcc{
+  background-color: var(--pc);
+}
+
+.video{
+  position: absolute;
+  top: 0vh;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.nav_index{
+  z-index: 1!important;
+}
+
+.img_invert{
+  filter: invert();
+}
+
+a{
+  text-decoration: none !important;
+
+}
+
+.pbtn{
+  background-color: var(--pc);
+  color: white;
+}
+
+.pbtn:hover{
+  color: yellow !important;
+  background-color: var(--pc);
+}
