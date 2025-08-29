@@ -4,11 +4,11 @@ import { useEffect } from 'react';
 const SubstackFeed = () => {
   useEffect(() => {
     window.SubstackFeedWidget = {
-      substackUrl: "globalwisdom.substack.com",
+      substackUrl: "mnzisengwe.substack.com",
       layout: "right",
       posts: 3,
       colors: {
-        primary: "#ffa600ff",
+        primary: "#25141e",
         secondary: "#808080",
         background: "#FFFFFF",
       },

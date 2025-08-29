@@ -58,7 +58,7 @@ const Navbar = () => {
 
   return (
     <div className="bg-white border-bottom shadow-sm sticky-top z-index:-2 nav_index" >
-      <div className="ms-2 me-2 py-3">
+      <div className="ms-2 me-2 py-2">
         <div className="d-flex justify-content-between align-items-center">
           {/* Logo */}
           <div className="navbar-brand">
@@ -80,16 +80,15 @@ const Navbar = () => {
           <div className="d-none d-md-block">
             <div className="d-flex gap-4">
             <Link href="/" className={`text-decoration-none  fw-medium hover-underline  ${selected==="Home"?"tp border-bottom border-warning border-3":"text-dark"}`} onClick={()=>set_selected("Home")}>Home</Link>
-              <Link href="/about" className={`text-decoration-none fw-medium hover-underline ${selected==="About"?"tp border-bottom border-warning border-3":"text-dark"}`} onClick={()=>set_selected("About")}>About</Link>
-              <Link href="/shop" className={`text-decoration-none fw-medium hover-underline ${selected==="Shop"?"tp border-bottom border-warning border-3":"text-dark"}`} onClick={()=>set_selected("Shop")}>Shop</Link>
-              <Link href="/blog" className={`text-decoration-none fw-medium hover-underline ${selected==="Blog"?"tp border-bottom border-warning border-3":"text-dark"}`} onClick={()=>set_selected("Blog")}>Blog</Link>
-              <Link href="/contact" className={`text-decoration-none  fw-medium hover-underline ${selected==="Contact"?"tp border-bottom border-warning border-3":"text-dark"}`} onClick={()=>set_selected("Contact")}>Contact</Link>
+              <Link href="#about" className={`text-decoration-none fw-medium hover-underline ${selected==="About"?"tp border-bottom border-warning border-3":"text-dark"}`} onClick={()=>set_selected("About")}>About</Link>
+              <Link href="#shop" className={`text-decoration-none fw-medium hover-underline ${selected==="Shop"?"tp border-bottom border-warning border-3":"text-dark"}`} onClick={()=>set_selected("Shop")}>Shop</Link>
+              {/* <Link href="/blog" className={`text-decoration-none fw-medium hover-underline ${selected==="Blog"?"tp border-bottom border-warning border-3":"text-dark"}`} onClick={()=>set_selected("Blog")}>Blog</Link> */}
             </div>
           </div>
 
           {/* Call Button (Desktop) */}
           <div className="d-none d-md-block">
-            <Link href="/contact">
+          <Link href="/blog">
               <button className="btn  text-white fw-bold ">
                 Blog
               </button>
@@ -99,11 +98,11 @@ const Navbar = () => {
           {/* Mobile Hamburger */}
           <div className="d-md-none">
             <button 
-              className="btn hamburger-btn p-1" 
+              className="btn hamburger-btn ps-1 pe-1 " 
               onClick={toggleDrawer}
               aria-label="Menu"
             >
-              <i className={`bi ${isDrawerOpen ? 'bi-x-lg' : 'bi-list'} fs-4 text-success`}></i>
+              Menu
             </button>
           </div>
         </div>
@@ -122,8 +121,8 @@ const Navbar = () => {
         <div className="drawer-content p-4">
           {/* Close Button */}
           <div className="d-flex justify-content-end mb-4">
-            <button className="btn p-0" onClick={toggleDrawer} aria-label="Close menu">
-              <i className="bi bi-x-lg fs-4 text-success"></i>
+            <button className="btn p-0 d-flex justify-content-center align-items-center pt-1 ps-1 pe-1" onClick={toggleDrawer} aria-label="Close menu">
+              <i className="bi bi-x-lg fs-4 text-white"></i>
             </button>
           </div>
 
@@ -137,14 +136,14 @@ const Navbar = () => {
               Home
             </Link>
             <Link 
-              href="/about" 
+              href="#about" 
               className="text-decoration-none text-dark fw-medium fs-5 py-2 border-bottom"
               onClick={() => setIsDrawerOpen(false)}
             >
               About
             </Link>
             <Link 
-              href="/shop" 
+              href="#shop" 
               className="text-decoration-none text-dark fw-medium fs-5 py-2 border-bottom"
               onClick={() => setIsDrawerOpen(false)}
             >
@@ -158,21 +157,11 @@ const Navbar = () => {
             >
               Blog
             </Link>
-            <Link 
-              href="/contact" 
-              className="text-decoration-none text-dark fw-medium fs-5 py-2 border-bottom"
-              onClick={() => setIsDrawerOpen(false)}
-            >
-              Contact
-            </Link>
+         
           </div>
 
           {/* Mobile Call Button */}
-          <Link href="/contact" className="text-decoration-none">
-            <button className="btn btn-outline-warning w-100" onClick={() => setIsDrawerOpen(false)}>
-              <i className="bi bi-telephone me-2"></i> Get Published
-            </button>
-          </Link>
+          
         </div>
       </div>
 

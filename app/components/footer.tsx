@@ -23,13 +23,12 @@ const Footer=()=>{
                 <div className="col-sm d-flex flex-column text-white">
                     <p className="fw-bold ">Quick Links</p>
                     <Link href="/" className="text-white"> Home</Link>
-                    <Link href="/about" className="text-white">About</Link>
-                    <Link href="/shop" className="text-white">Shop</Link>
+                    <Link href="#about" className="text-white">About</Link>
+                    <Link href="#shop" className="text-white">Shop</Link>
                     <Link href="/blog" className="text-white">Blog</Link>
-                    <Link href="/contact" className="text-white">Contact</Link>
                 </div>
                 <div className="col-sm">
-                        <p className="fw-bold ">Subscribe To Our Newsletter</p>
+                        <p className="fw-bold ">Subscribe To My Blog</p>
                             <iframe className="rounded w-100" src="https://mnzisengwe.substack.com/embed"></iframe>
 
                 </div>

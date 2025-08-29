@@ -1,33 +1,28 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
 import { BgImg } from "./components/bg_img";
 import { Fade } from "react-awesome-reveal";
+import { Modal } from "react-bootstrap";
+import { useState } from "react";
 
 export default function Home() {
+  const [selected,set_selected] = useState<any>({
+     title: "",
+    img:"",
+    description:"",
+    author:"",
+    price: 0
+  })
+  const [show,set_show] = useState<boolean>(false)
+
   const sample_data = [
     {
-    title: "After The Burial",
-    img:"https://ngratesc.sirv.com/global_wisdom/book3.jpg",
-    author:"Author Name",
-    price: "$15,00"
-  },
-   {
-    title: "Just Trust God My Brother",
-    img:"https://ngratesc.sirv.com/global_wisdom/boook2.jpg",
-    author:"Author Name",
-    price: "$15,00"
-  },
-   {
-    title: "Dear World",
-    img:"https://ngratesc.sirv.com/global_wisdom/File.jpg",
-    author:"Author Name",
-    price: "$15,00"
-  },
-   {
-    title: "The Highway Code Of Life",
-    img:"https://ngratesc.sirv.com/global_wisdom/book.jpg",
-    author:"Author Name",
-    price: "$15,00"
+    title: "Mhando",
+    img:"https://ngratesc.sirv.com/global_wisdom/front.jpg",
+    description:"In post-Rhodesia Zimbabwe, comfort and chaos collide as one young woman confronts privilege, family secrets, and forbidden romance at her elite school. When unexpected challenges and a new sibling shake her world, she’s forced to question what really matters. ",
+    author:"M.N Zisengwe",
+    price: 20
   }
 ]
   return (
@@ -40,7 +35,7 @@ export default function Home() {
           </h1>
           <p>Discover the vibrant voice of M.N. Zisengwe, where faith, humor, and Zimbabwean stories come alive on every page.</p>
           <div className="d-flex  flex-row flex-wrap justify-content-center gap-2">
-            <Link href="/contact"><button className="btn">Shop</button></Link>
+            <Link href="#shop"><button className="btn w-100">Shop</button></Link>
           </div>
 
         </div>
@@ -65,7 +60,7 @@ export default function Home() {
             </Fade>
           </div>
         </div>
-         <div className="row align-items-center">
+         <div className="row align-items-center" id="about">
           
           <div className="col-sm mb-3 order-md-2">
             <Fade cascade direction="up">
@@ -117,19 +112,36 @@ export default function Home() {
 </Fade>
         </div>
       </div> */}
-      <div className="container  text-center   min-vh-100 mb-3 ">
+      <div className="container  text-center   min-vh-100 mb-3 " id="shop">
         <div>
-        <Fade direction="left">
+        <Fade >
         <h1 className="display-1 fw-bold  ">Shop</h1>
-        <div className="row gap-3 ">
+        <div className="row gap-3 justify-content-center ">
           {
             sample_data.map((book, index) =>{
               return(
-  <div className="col-sm p-3 shadow rounded-0" key={index+"s"} style={{ backgroundColor: "#f8f9fa" }}>
+  <div className="col-sm col-md-3 p-2 shadow-lg rounded-2 text-start" key={index+"s"}>
             <div style={{ height: "300px", ...BgImg(book.img) }} className="d-flex justify-content-center align-items-center mb-3">
 
             </div>
-            <span className="fw-bold pt-3">{book.title}</span>
+            <div className="d-flex justify-content-between align-items-center">
+              <span className="fw-bold">{book.title}</span>
+            <span>$20.00</span>
+            </div>
+          
+
+            <span className="fs-6"
+              
+            >
+                      
+
+              "Mhando" explores the complicated highs and lows of privilege....
+            </span>
+            <br/>
+            <button className="btn btn-outline-light w-100" onClick={()=>{
+              set_selected(book)
+              set_show(true)
+              }}>View</button>
             
           </div>
               )
@@ -153,6 +165,26 @@ export default function Home() {
       </Fade>
 
             </div>
+            <Modal show={show} size="lg">
+              <Modal.Header className="d-flex justify-content-between">
+                <h5>View {selected.title}</h5>
+                <button className="btn" onClick={()=>set_show(false)}>Close</button>
+              </Modal.Header>
+              <Modal.Body>
+                <div className="row align-items-center">
+                  <div className="col-sm">
+                    <Image src={selected.img} width={400} height={300} className="img-fluid" alt="book cover"/>
+                  </div>
+                  <div className="col-sm">
+                    <h1 className="tp">{selected.title}</h1>
+                    <p><i>Author {selected.author}</i></p>
+                    <p className="fs-6">{selected.description}</p>
+                    <button className="btn ">Buy ${selected.price.toFixed(2)}</button>
+                  </div>
+                </div>  
+
+              </Modal.Body>
+            </Modal>
 
 
     </div>

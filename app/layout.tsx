@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Montserrat, Libertinus_Mono } from "next/font/google";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./globals.css";
@@ -8,16 +7,7 @@ import Footer from "./components/footer";
 
 
 
-const mont = Montserrat({
-  variable: "--font-montserrat",
-  subsets:["latin"]
-})
 
-const liber = Libertinus_Mono({
-  variable:"--font-libertinus-mono",
-  subsets:["latin"],
-  weight:"400"
-})
 
 
 
@@ -33,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${liber.variable}`}>
+      <body >
         <Navbar/>
         {children}
         <Footer/>
