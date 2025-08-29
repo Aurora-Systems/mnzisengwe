@@ -179,7 +179,7 @@ export default function Home() {
                     <h1 className="tp">{selected.title}</h1>
                     <p><i>Author {selected.author}</i></p>
                     <p className="fs-6">{selected.description}</p>
-                    <button className="btn ">Buy ${selected.price.toFixed(2)}</button>
+                    <button className="btn w w-100">Buy ${selected.price.toFixed(2)}</button>
                   </div>
                 </div>  
 
