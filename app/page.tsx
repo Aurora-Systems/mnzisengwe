@@ -6,6 +6,7 @@ import { Fade } from "react-awesome-reveal";
 import { Modal } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { db } from "./init/supabase";
+import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 
 export default function Home() {
   const [selected,set_selected] = useState<any>({
@@ -17,6 +18,8 @@ export default function Home() {
   })
   const [show,set_show] = useState<boolean>(false)
   const [books,set_books] = useState<Array<any>>([])
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [paypalError, setPaypalError] = useState("");
 
   const get_data = async()=>{
     try{
@@ -39,6 +42,66 @@ export default function Home() {
     price: 20
   }
 ]
+
+  const createOrder = (data: any, actions: any) => {
+    return actions.order.create({
+      purchase_units: [
+        {
+          amount: {
+            value: selected.price?.toFixed(2),
+            currency_code: 'USD'
+          },
+          description: `Farm Market Order`,
+        },
+      ],
+    });
+  };
+  const onApprove = async (data: any, actions: any) => {
+    setIsProcessing(true);
+    try {
+      const order = await actions.order.get();
+      console.log('Payment successful', order);
+      
+      // Extract payer information from PayPal response
+      const payerName = order.payer?.name?.given_name || '';
+      const payerEmail = order.payer?.email_address || '';
+      
+      const paymentData = {
+        name: payerName,
+        email: payerEmail,
+        amount: selected.price?.toFixed(2),
+        orderID: data.orderID
+      };
+      
+      console.log('Sending to API:', paymentData);
+      
+      // Send payment data to our API
+      const response = await fetch('/api/payment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(paymentData),
+      });
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('API error response:', errorText);
+        throw new Error('Payment processing failed');
+      }
+      const result = await response.json();
+      console.log('API response:', result);
+      alert('Payment processed successfully!');
+    } catch (error) {
+      console.error('Payment failed:', error);
+      setPaypalError('Payment failed. Please try again.');
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+  const onError = (err: any) => {
+    console.error('PayPal error:', err);
+    setPaypalError('An error occurred with PayPal. Please try again.');
+  };
 
 useEffect(()=>{
   get_data()
@@ -181,6 +244,7 @@ useEffect(()=>{
               {book?.description}
             </span>
             <br/>
+
             <button className="btn btn-outline-light w-100" onClick={()=>{
               set_selected(book)
               set_show(true)
@@ -219,10 +283,26 @@ useEffect(()=>{
                     <Image src={selected.img} width={400} height={300} className="img-fluid" alt="book cover"/>
                   </div>
                   <div className="col-sm">
+                    <div className="d-flex justify-content-between align-items-baseline">
                     <h1 className="tp">{selected.title}</h1>
+                    <span>${selected.price.toFixed(2)}</span>
+                    </div>
                     <p><i>Author {selected.author}</i></p>
                     <p className="fs-6">{selected.description}</p>
-                    <button className="btn w w-100">Buy ${selected.price.toFixed(2)}</button>
+                    {/* <button className="btn w w-100">Buy ${selected.price.toFixed(2)}</button> */}
+                     <PayPalScriptProvider options={{
+          clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || '',
+          currency: 'USD',
+          intent: 'capture'
+        }}>
+          <PayPalButtons
+            createOrder={createOrder}
+            onApprove={onApprove}
+            onError={onError}
+            style={{ layout: "vertical" }}
+            disabled={isProcessing}
+          />
+        </PayPalScriptProvider>
                   </div>
                 </div>  
 
