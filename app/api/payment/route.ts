@@ -6,6 +6,7 @@ interface PaymentData {
   amount: string;
   orderID: string;
 }
+// const PAYPAL_API_URL = process.env.PAYPAL_API_URL || 'https://api-m.sandbox.paypal.com';
 const PAYPAL_API_URL = process.env.PAYPAL_API_URL || 'https://api-m.sandbox.paypal.com';
 async function getPayPalAccessToken() {
   try {
