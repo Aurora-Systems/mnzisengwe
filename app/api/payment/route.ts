@@ -1,10 +1,13 @@
 import { NextResponse } from 'next/server';
 import { headers } from 'next/headers';
+import { db } from '@/app/init/supabase';
+
 interface PaymentData {
   name: string;
   email: string;
   amount: string;
   orderID: string;
+  asset_id: string
 }
 // const PAYPAL_API_URL = process.env.PAYPAL_API_URL || 'https://api-m.sandbox.paypal.com';
 const PAYPAL_API_URL = process.env.PAYPAL_API_URL || 'https://api-m.sandbox.paypal.com';
@@ -71,6 +74,8 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
+
+    const asset_url = await db.storage.from("assets").createSignedUrl(data.asset_id,3600)
     return NextResponse.json(
       { 
         success: true,
@@ -81,7 +86,8 @@ export async function POST(request: Request) {
           amount: data.amount,
           orderID: data.orderID,
           captureID: captureData.id,
-          captureStatus: captureData.status
+          captureStatus: captureData.status,
+          asset_url:asset_url.data?.signedUrl
         }
       },
       { status: 200 }

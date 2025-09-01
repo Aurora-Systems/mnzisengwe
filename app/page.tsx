@@ -70,7 +70,8 @@ export default function Home() {
         name: payerName,
         email: payerEmail,
         amount: selected.price?.toFixed(2),
-        orderID: data.orderID
+        orderID: data.orderID,
+        asset_id:selected.asset_id
       };
       
       console.log('Sending to API:', paymentData);
