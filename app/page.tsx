@@ -20,6 +20,8 @@ export default function Home() {
   const [books,set_books] = useState<Array<any>>([])
   const [isProcessing, setIsProcessing] = useState(false);
   const [paypalError, setPaypalError] = useState("");
+  const [show_download,set_show_download]  = useState<boolean>(false)
+  const [asset_url,set_asset_url] = useState<string>("")
 
   const get_data = async()=>{
     try{
@@ -39,7 +41,8 @@ export default function Home() {
     img:"https://ngratesc.sirv.com/global_wisdom/front.jpg",
     description:"In post-Rhodesia Zimbabwe, comfort and chaos collide as one young woman confronts privilege, family secrets, and forbidden romance at her elite school. When unexpected challenges and a new sibling shake her world, she’s forced to question what really matters. ",
     author:"M.N Zisengwe",
-    price: 20
+    price: 20,
+    asset_id:"b0ef2aa9-1371-44a9-b481-6ec5bb2c8de3"
   }
 ]
 
@@ -90,8 +93,8 @@ export default function Home() {
         throw new Error('Payment processing failed');
       }
       const result = await response.json();
-      console.log('API response:', result);
-      alert('Payment processed successfully!');
+      set_asset_url(result.data.asset_url);
+      set_show_download(true)
     } catch (error) {
       console.error('Payment failed:', error);
       setPaypalError('Payment failed. Please try again.');
@@ -291,6 +294,15 @@ useEffect(()=>{
                     <p><i>Author {selected.author}</i></p>
                     <p className="fs-6">{selected.description}</p>
                     {/* <button className="btn w w-100">Buy ${selected.price.toFixed(2)}</button> */}
+                    {show_download?
+                      <div>
+                        <p className="text-success"><small>✅ Your payment was a successfull! Download link is only available for an hour!</small></p>
+                        <Link href={asset_url} target="_blank"><button className="btn w-100" onClick={()=>{
+                          set_show_download(false)
+                          set_show(false)
+                        }}>Download {selected.title}</button></Link>
+                      </div>
+                    :
                      <PayPalScriptProvider options={{
           clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || '',
           currency: 'USD',
@@ -304,6 +316,7 @@ useEffect(()=>{
             disabled={isProcessing}
           />
         </PayPalScriptProvider>
+}
                   </div>
                 </div>  
 
