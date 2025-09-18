@@ -82,7 +82,7 @@ const Navbar = () => {
             <Link href="/" className={`text-decoration-none  fw-medium hover-underline  ${selected==="Home"?"tp border-bottom border-warning border-3":"text-dark"}`} onClick={()=>set_selected("Home")}>Home</Link>
               <Link href="#about" className={`text-decoration-none fw-medium hover-underline ${selected==="About"?"tp border-bottom border-warning border-3":"text-dark"}`} onClick={()=>set_selected("About")}>About</Link>
               <Link href="#shop" className={`text-decoration-none fw-medium hover-underline ${selected==="Shop"?"tp border-bottom border-warning border-3":"text-dark"}`} onClick={()=>set_selected("Shop")}>Shop</Link>
-              {/* <Link href="/blog" className={`text-decoration-none fw-medium hover-underline ${selected==="Blog"?"tp border-bottom border-warning border-3":"text-dark"}`} onClick={()=>set_selected("Blog")}>Blog</Link> */}
+              <Link href="/blog" className={`text-decoration-none fw-medium hover-underline ${selected==="Blog"?"tp border-bottom border-warning border-3":"text-dark"}`} onClick={()=>set_selected("Blog")}>Blog</Link>
             </div>
           </div>
 

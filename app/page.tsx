@@ -203,7 +203,7 @@ useEffect(()=>{
         <h1 className="display-1 fw-bold  ">Shop</h1>
         <div className="row gap-3 justify-content-center ">
           {
-            sample_data.map((book, index) =>{
+            books.map((book, index) =>{
               return(
   <div className="col-sm col-md-3 p-2 shadow-lg rounded-2 text-start" key={index+"s"}>
             <div style={{ height: "300px", ...BgImg(book.img) }} className="d-flex justify-content-center align-items-center mb-3">
@@ -211,7 +211,7 @@ useEffect(()=>{
             </div>
             <div className="d-flex justify-content-between align-items-center">
               <span className="fw-bold">{book.title}</span>
-            <span>$20.00</span>
+            <span>${book?.price.toFixed(2)}</span>
             </div>
           
 
@@ -230,7 +230,7 @@ useEffect(()=>{
             })
           }
 
-          {
+          {/* {
             books.map((book:any,index)=>{
                 return(
   <div className="col-sm col-md-3 p-2 shadow-lg rounded-2 text-start" key={index+"s"}>
@@ -257,7 +257,7 @@ useEffect(()=>{
           </div>
               )
             })
-          }
+          } */}
                   </div>
           <br/>
           
