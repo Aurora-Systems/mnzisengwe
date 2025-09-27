@@ -62,7 +62,7 @@ const Navbar = () => {
         <div className="d-flex justify-content-between align-items-center">
           {/* Logo */}
           <div className="navbar-brand">
-            <Link href="/" className="text-decoration-none text-dark fw-bold d-flex flex-row align-items-center gap-2">
+            <Link href="/" className="text-decoration-none ts fw-bold d-flex flex-row align-items-center gap-2">
               
               M.N.Zisengwe
               {/* <Image 

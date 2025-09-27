@@ -8,7 +8,7 @@ const SubstackFeed = () => {
       layout: "right",
       posts: 3,
       colors: {
-        primary: "#25141e",
+        primary: "#f072af",
         secondary: "#808080",
         background: "#FFFFFF",
       },

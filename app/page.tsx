@@ -132,7 +132,7 @@ useEffect(()=>{
         <div className="row align-items-center">
           <div className="col-sm mb-3">
             <Fade cascade direction="up">
-            <h2 className="display-1 fw-bold mb-4">Discover Her World</h2>
+            <h2 className="display-1 fw-bold mb-4 ts">Discover Her World</h2>
             <p className="">
               Welcome to the world of Mutsawashe Nancy Zisengwe, a writer whose stories capture the spirit, humor, and contradictions of everyday life in Zimbabwe and beyond. Discover her remarkable debut novel, "Mhando," and explore a creative journey shaped by faith, family, and fearless curiosity. Kick back, browse around, and get to know the woman behind the words whether she’s knitting, rock climbing, or simply enjoying her front porch views.
             </p>
@@ -149,7 +149,7 @@ useEffect(()=>{
           
           <div className="col-sm mb-3 order-md-2">
             <Fade cascade direction="up">
-            <h2 className="display-1 fw-bold mb-4">About</h2>
+            <h2 className="display-1 fw-bold mb-4 ts">About</h2>
             <p className="">
               Meet Mutsawashe Nancy Zisengwe, the heart and mind behind M.N. Zisengwe. As a girl, she found comfort Knitting, crocheting or solving the newspapers latest edition of sudoku; as a woman, she’s traded swings for hammocks and daydreams for vibrant stories. Nancy believes in the power of passion, the teachings of Jesus Christ of Nazareth, and the undeniable truth that eggs are best avoided. Her days are a blend of lazy afternoons and bursts of creative energy always with an eye for humor and honesty. Through her writing, Nancy seeks to offer fresh perspectives, especially about life in Zimbabwe, beyond the stereotypes and struggles.
             </p>
@@ -200,7 +200,7 @@ useEffect(()=>{
       <div className="container  text-center   min-vh-100 mb-3 " id="shop">
         <div>
         <Fade >
-        <h1 className="display-1 fw-bold  ">Shop</h1>
+        <h1 className="display-1 fw-bold  ts">Shop</h1>
         <div className="row gap-3 justify-content-center ">
           {
             books.map((book, index) =>{
@@ -268,8 +268,8 @@ useEffect(()=>{
      
       <div className="bcc">
       <Fade cascade direction="up">
-        <div className="container py-5 text-center text-white" >
-          <h1 className="display-1  fw-bold">Let's Go on a Journey Together!</h1>
+        <div className="container py-5 text-center " >
+          <h1 className="display-1  fw-bold ts">Let's Go on a Journey Together!</h1>
           <p>Step into Nancy’s thoughts and daily adventures</p>
             <Link href="/blog"><button  className="btn btn-outline-light">Read my blog</button></Link>
         </div>
