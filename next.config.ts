@@ -8,6 +8,12 @@ const nextConfig: NextConfig = {
             hostname: "ngratesc.sirv.com",
             port: "",
             pathname: "/**"
+        },
+        {
+          protocol: "https",
+            hostname: "wydajmnykbvjicgnncqz.supabase.co",
+            port: "",
+            pathname: "/**"
         }
     ]
   }

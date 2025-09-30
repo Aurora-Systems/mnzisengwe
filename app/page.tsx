@@ -7,11 +7,13 @@ import { Modal } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { db } from "./init/supabase";
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
+import get_image from "./components/get_image";
 
 export default function Home() {
   const [selected,set_selected] = useState<any>({
-     title: "",
-    img:"",
+     item_name: "",
+    image_id:"",
+    asset_id:"",
     description:"",
     author:"",
     price: 0
@@ -206,18 +208,18 @@ useEffect(()=>{
             books.map((book, index) =>{
               return(
   <div className="col-sm col-md-3 p-2 shadow-lg rounded-2 text-start" key={index+"s"}>
-            <div style={{ height: "300px", ...BgImg(book.img) }} className="d-flex justify-content-center align-items-center mb-3">
+            <div style={{ height: "300px", ...BgImg(get_image(book?.image_id)) }} className="d-flex justify-content-center align-items-center mb-3">
 
             </div>
             <div className="d-flex justify-content-between align-items-center">
-              <span className="fw-bold">{book.title}</span>
+              <span className="fw-bold">{book?.item_name}</span>
             <span>${book?.price.toFixed(2)}</span>
             </div>
           
 
             <p className="fs-6 text-truncate pb-0 mb-0"        
             >
-              "Mhando" explores the complicated highs and lows of privilege....
+             {book?.description}..
             </p>
             <br/>
             <button className="btn btn-outline-light w-100" onClick={()=>{
@@ -284,11 +286,11 @@ useEffect(()=>{
               <Modal.Body>
                 <div className="row align-items-center">
                   <div className="col-sm">
-                    <Image src={selected.img} width={400} height={300} className="img-fluid" alt="book cover"/>
+                    <Image src={get_image(selected.image_id)} width={400} height={300} className="img-fluid" alt="book cover"/>
                   </div>
                   <div className="col-sm">
                     <div className="d-flex justify-content-between align-items-baseline">
-                    <h1 className="tp">{selected.title}</h1>
+                    <h1 className="tp">{selected.item_name}</h1>
                     <span>${selected.price.toFixed(2)}</span>
                     </div>
                     <p><i>Author {selected.author}</i></p>
