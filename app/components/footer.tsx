@@ -14,7 +14,7 @@ const Footer=()=>{
                 <div className="col-sm d-flex flex-column  ">
                     <p className="fw-bold ts">Contact Details</p>
                     <Link href="mailto:thoughtsbymercedes@gmail.com"  className="text-black">thoughtsbymercedes@gmail.com</Link>
-                    <Link href="tel:+263775388608" className="text-black">+263 77 538 8608</Link>
+                    {/* <Link href="tel:+263775388608" className="text-black">+263 77 538 8608</Link> */}
                     <Link href="https://www.facebook.com/profile.php?id=61570416176107" className="text-black">Facebook</Link>
                     <Link href="https://www.instagram.com/thoughtsbymutsaaah" className="text-black">Instagram</Link>
 
