@@ -292,9 +292,12 @@ useEffect(()=>{
                     <div className="d-flex justify-content-between align-items-baseline">
                     <h1 className="tp">{selected.item_name}</h1>
                     <span>${selected.price.toFixed(2)}</span>
-                    </div>
+                    </div> 
                     <p><i>Author {selected.author}</i></p>
                     <p className="fs-6">{selected.description}</p>
+                    <a href="https://amzn.eu/d/1SuUu7s" target="_blank"><button className="btn btn-outline-light w-100 mb-3">Buy Paperback</button></a>
+                    <br/>
+                    <p className="text-muted text-center">or buy the ebook here⬇️</p>
                     {/* <button className="btn w w-100">Buy ${selected.price.toFixed(2)}</button> */}
                     {show_download?
                       <div>
